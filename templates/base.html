@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}Lev Antuganov — photographer</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+
+
+    {% block css %}
+    {% endblock css %}
+
+    <script>
+        // Display body when DOM is loaded
+        let domReady = (cb) => {
+            document.readyState === 'interactive' || document.readyState === 'complete'
+                ? cb()
+                : document.addEventListener('DOMContentLoaded', cb);
+        };
+
+        domReady(() => {
+            document.body.style.visibility = 'visible';
+        });
+    </script>
+</head>
+
+<body style="visibility: hidden;">
+    <header>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                    <path class="line top" d="M 20,30 H 80" />
+                    <path class="line middle" d="M 20,50 H 80" />
+                    <path class="line bottom" d="M 20,70 H 80" />
+                </svg>
+            </label>
+            <label class="logo">
+                <h1><a href="{% url 'main-page' %}">LEV ANTUGANOV</a></h1>
+            </label>
+            <ul>
+                <li><a href="{% url 'main-page' %}">home</a></li>
+                <li><a href="{% url 'series' %}">series</a></li>
+                <li><a href="{% url 'about' %}">about</a></li>
+                <li><a href="{% url 'contact' %}">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock content%}
+    <div class="footer">ABOBA ABOBA ABOBA</div>
+    {% block js %}
+    {% endblock js %}
+
+</body>
+
+</html>

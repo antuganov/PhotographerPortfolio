@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}" />
+<link rel="stylesheet" href="{% static 'portfolio/css/glightbox.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<div class="grid">
+  <div class="grid-col grid-col--1">
+    {% for image in main_gallery %}
+    <div class="grid-item">
+      <img class="glightbox" src="{{ image.image.file.url }}" loading="lazy" width="200" height="200">
+    </div>
+    {% endfor %}
+  </div>
+  <div class="grid-col grid-col--2"></div>
+  <div class="grid-col grid-col--3"></div>
+  <div class="grid-col grid-col--4"></div>
+  <div class="grid-col grid-col--5"></div>
+  <div class="grid-col grid-col--6"></div>
+
+</div>
+{% endblock content %}
+{% block js %}
+<script src="{% static 'portfolio/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'portfolio/js/glightbox.js' %}"></script>
+<script src="{% static 'portfolio/js/colcade.js' %}"></script>
+<script>
+  // reset scrolling position after page is reloaded
+  $(function () {
+    $('html, body').animate({ scrollTop: 0 }, 1);
+  });
+  // init GLightbox
+  const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: false,
+    autoplayVideos: true
+  });
+  // init Colcade
+  $('.grid').colcade({
+    columns: '.grid-col',
+    items: '.grid-item',
+    gutter: 40,
+  });
+
+  // observer for images' animation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('grid-item-animation');
+        return;
+      }
+      // entry.target.classList.remove('grid-item-animation');
+    });
+  });
+  const items = document.querySelectorAll('.grid-item');
+  items.forEach((element) => observer.observe(element));
+</script>
+{% endblock js %}

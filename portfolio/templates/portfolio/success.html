@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Message sent to
+{% endblock title%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'portfolio/css/success.css' %}" />
+{% endblock css %}
+
+{% block content %}
+
+<div class="container">
+  <img src="{% static 'portfolio/images/pigeon.webp' %}">
+  <h2>Thy missive hath been dispatched!</h2>
+  <p>I shall presently reach out to thee.</p>
+</div>
+{% endblock content %}

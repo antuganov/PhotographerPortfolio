@@ -1,0 +1,24 @@
+.container {
+    margin-top: 50px;
+    font-family: Lora;
+    text-align: center;
+}
+
+.container p {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.container h2 {
+    text-align: center;
+}
+
+img {
+    width: 47vw;
+}
+
+@media (min-width: 768px) {
+    img {
+        width: 360px;
+    }
+}

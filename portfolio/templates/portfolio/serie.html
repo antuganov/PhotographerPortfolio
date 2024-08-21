@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ serie.title }} by
+{% endblock title%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'portfolio/css/serie.css' %}" />
+<link rel="stylesheet" href="{% static 'portfolio/css/glightbox.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<div class="gallery-info">
+    <div class="gallery-name">{{ serie.title|upper }}</div>
+    <div class="gallery-location-and-date">
+        {% if serie.location %}
+        <div class="gallery-location">{{ serie.location }} · </div>
+        {% endif %}
+        <div class="gallery-date">{{ serie.date|date:'F, Y' }}</div>
+    </div>
+    <div class="gallery-description">{{ serie.description }}</div>
+</div>
+<div class="grid">
+    <div class="grid-sizer"></div>
+    {% for image_in_gallery in serie.imageingallery_set.all|dictsort:"order" %}
+    {% with image=image_in_gallery.image %}
+    {% if image.width < image.height %} <div class="grid-item">
+        {% else %}
+        <div class="grid-item grid-item--width2">
+            {% endif %}
+            <img class="glightbox lazy" src="{{ image.file.url }}" loading="lazy" width="200" height="200">
+        </div>
+    {% endwith %}
+    {% endfor %}
+</div>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'portfolio/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'portfolio/js/jquery.lazyload.min.js' %}"></script>
+<script src="{% static 'portfolio/js/glightbox.js' %}"></script>
+<script src="{% static 'portfolio/js/masonry.pkgd.min.js' %}"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script>
+    // init Glightbox
+    const lightbox = GLightbox({
+        touchNavigation: true,
+        loop: false,
+    });
+
+    // init Masonry with JQuery
+    var $grid = $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+        gutter: 40,
+        originTop: true,
+        originLeft: true,
+        transitionDuration: '0.3s',
+        initLayout: false,
+    });
+
+    $grid.imagesLoaded().progress(function () {
+        $grid.masonry('layout');
+    });
+</script>
+{% endblock js %}

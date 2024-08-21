@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Contact
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'portfolio/css/contact.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<div class="hello-container">
+  <h1>Say Hello</h1>
+</div>
+
+<div class="container">
+  <form method="post" class="form">
+    <h2>Prefer Ye Olde Fashioned Way?</h2>
+    <p>Fill out this form to send an email.</p>
+    <div class="form-container">
+      {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group {% if field.errors %} has-error {% endif %}">
+          {{ field }}
+          {% if field.label == 'Message' %}
+            <label class="form__label form__message" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {% else %}
+            <label class="form__label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {% endif %}
+          {% for error in field.errors %}
+            <div class="errors">{{ error }}</div>
+          {% endfor %}
+      </div>
+    {% endfor %}
+    <div class="form-actions">
+      <button type="submit" class="submit-button">Send Message</button>
+    </div>
+    </div>
+  </form>
+  <div class="cta-form">
+    <h2>Connect with me conveniently.</h2>
+    <p>Choose what works best for you.</p>
+    <h3>Social</h3>
+    <div class="social-links">
+      <a href="https://t.me/untwo">
+        <img class="icon telegram" src="{% static 'portfolio/images/telegram.svg' %}" alt="telegram icon">
+      </a>
+      <a href="https://www.instagram.com/lev.lives/">
+        <img class="icon instagram" src="{% static 'portfolio/images/instagram.svg' %}" alt="instagram icon">
+      </a>
+      <a data-auto-recognition="true" href="mailto:antgnff@gmail.com">
+        <img class="icon mail" src="{% static 'portfolio/images/mail.svg' %}" alt="mail icon">
+      </a>
+    </div>
+    <h3>Phone</h3>
+    <p>+7 (982) 995-79-45</p>
+    <h3>Email</h3>
+    <a class="email-link" data-auto-recognition="true" href="mailto:antgnff@gmail.com">antgnff@gmail.com</a>
+  </div>
+</div>
+{% endblock content %}
