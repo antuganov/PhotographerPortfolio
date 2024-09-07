@@ -91,7 +91,7 @@
 .gallery-title {
     display: inline-block;
     color: white;
-    font-family: Oswald, sans-serif;
+    font-family: var(--secondary-font-family);
     font-size: 2em;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -101,7 +101,6 @@
 
 .gallery-date {
     color: white;
-    font-family: Lora, serif;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

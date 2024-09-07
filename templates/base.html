@@ -38,8 +38,8 @@
                     <path class="line bottom" d="M 20,70 H 80" />
                 </svg>
             </label>
-            <label class="logo">
-                <h1><a href="{% url 'main-page' %}">LEV ANTUGANOV</a></h1>
+            <label >
+                <div class="logo"><a href="{% url 'main-page' %}">Lev Antuganov</a></div>
             </label>
             <ul>
                 <li><a href="{% url 'main-page' %}">home</a></li>
@@ -49,13 +49,32 @@
             </ul>
         </nav>
     </header>
+    <div class="page-content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <div class="footer">
+        <div class="footer-social-links">
+            <a href="https://t.me/untwo" target="_blank">
+                <img class="footer-icon telegram" src="{% static 'portfolio/images/footer-telegram.svg' %}"
+                    alt="telegram icon">
+            </a>
 
-    {% block content %}
-    {% endblock content%}
-    <div class="footer">ABOBA ABOBA ABOBA</div>
-    {% block js %}
-    {% endblock js %}
+            <a href="https://github.com/antuganov" target="_blank">
+                <img class="footer-icon github" src="{% static 'portfolio/images/footer-github.svg' %}" alt="telegram icon">
+            </a>
 
+            <a href="https://www.instagram.com/lev.lives/" target="_blank">
+                <img class="footer-icon instagram" src="{% static 'portfolio/images/footer-instagram.svg' %}"
+                    alt="instagram icon">
+            </a>
+        </div>
+        <div>
+            <p>© Lev Antuganov</p>
+        </div>
+    </div>
 </body>
+{% block js %}
+{% endblock js %}
 
 </html>

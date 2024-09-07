@@ -17,14 +17,13 @@
 .gallery-info {
   display: flex;
   flex-direction: column;
-  font-family: Lora;
   font-size: 18px;
   gap: 0.5em;
   padding: 1.5em;
 }
 
 .gallery-name {
-  font-family: Oswald;
+  font-family: var(--secondary-font-family);
   font-size: 3rem;
   text-align: center;
 }
