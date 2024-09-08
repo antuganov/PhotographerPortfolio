@@ -2,3 +2,5 @@
 /.vscode
 /venv
 /portfolio/migrations
+/portfolio/__pycache__
+/delevoper/__pycache__
