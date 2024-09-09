@@ -8,7 +8,7 @@ from .forms import ContactForm
 
 
 class MainPage(ListView):
-    template_name = "portfolio/main.html"
+    template_name = "portfolio/index.html"
     model = ImageInGallery
     context_object_name = "main_gallery"
 
