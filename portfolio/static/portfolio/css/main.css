@@ -1,13 +1,12 @@
 .grid {
   display: flex;
-  margin-right: -40px;
+  gap: 40px;
 }
 
 .grid-col {
   flex-grow: 1;
   width: 100%;
   height: auto;
-  margin-right: 40px;
 }
 
 .grid-col--2,

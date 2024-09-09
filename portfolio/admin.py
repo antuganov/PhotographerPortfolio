@@ -14,7 +14,7 @@ class ImageTabularInline(SortableTabularInline):
 
     def image_preview(self, obj):
         image = obj.image
-        preview_size = 75
+        preview_size = 150
         if image.file:
             return format_html(
                 f'<img src="{image.file.url}" style="max-width:{preview_size}px"/><br>'

@@ -11,7 +11,12 @@
   <div class="grid-col grid-col--1">
     {% for image in main_gallery %}
     <div class="grid-item">
-      <img class="glightbox" src="{{ image.image.file.url }}" loading="lazy" width="200" height="200">
+      <img class="glightbox" src="{{ image.image.file.url }}" width="200" height="200"
+      {% if forloop.counter > 10 %}
+        loading="lazy"
+      {% else %}
+        loading="eager"
+      {% endif %}>
     </div>
     {% endfor %}
   </div>
@@ -55,7 +60,7 @@
       // entry.target.classList.remove('grid-item-animation');
     });
   });
-  const items = document.querySelectorAll('.grid-item');
-  items.forEach((element) => observer.observe(element));
+  const gridItems = document.querySelectorAll('.grid-item');
+  gridItems.forEach((gridItem) => observer.observe(gridItem));
 </script>
 {% endblock js %}

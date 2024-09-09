@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    padding: 2rem;
+}
+
+.image-container img {
+    max-height: 15vh;
+}
+
+.text-container {
+    max-width: 40%;
+}
+
+.text-container h1 {
+    font-family: var(--secondary-font-family);
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .text-container {
+        max-width: 80%;
+    }
+}

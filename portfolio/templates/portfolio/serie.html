@@ -29,10 +29,15 @@
         {% else %}
         <div class="grid-item grid-item--width2">
             {% endif %}
-            <img class="glightbox lazy" src="{{ image.file.url }}" loading="lazy" width="200" height="200">
+            <img class="glightbox lazy" src="{{ image.file.url }}" width="200" height="200"
+            {% if forloop.counter >= 10%}
+                loading="lazy"
+            {% else %}
+                loading="eager"
+            {% endif %}>
         </div>
-    {% endwith %}
-    {% endfor %}
+        {% endwith %}
+        {% endfor %}
 </div>
 {% endblock content %}
 
