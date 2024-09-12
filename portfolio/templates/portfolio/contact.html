@@ -10,14 +10,10 @@ Contact
 {% endblock css %}
 
 {% block content %}
-<div class="hello-container">
-  <h1>Say Hello</h1>
-</div>
-
 <div class="container">
   <form method="post" class="form">
-    <h2>Prefer Ye Olde Fashioned Way?</h2>
-    <p>Fill out this form to send an email.</p>
+    <div class="form-title">Prefer Ye Olde Fashioned Way?</div>
+    <div class="form-discreption">Fill out this form to send an email.</div>
     <div class="form-container">
       {% csrf_token %}
     {% for field in form %}
@@ -39,9 +35,9 @@ Contact
     </div>
   </form>
   <div class="cta-form">
-    <h2>Connect with me conveniently.</h2>
-    <p>Choose what works best for you.</p>
-    <h3>Social</h3>
+    <div class="form-title">Connect with me conveniently.</div>
+    <div class="form-discreption">Choose what works best for you.</div>
+    <div class="form-label">Social</div>
     <div class="social-links">
       <a href="https://t.me/untwo" target="_blank">
         <img class="icon telegram" src="{% static 'portfolio/images/telegram.svg' %}" alt="telegram icon">
@@ -53,9 +49,9 @@ Contact
         <img class="icon mail" src="{% static 'portfolio/images/mail.svg' %}" alt="mail icon">
       </a>
     </div>
-    <h3>Phone</h3>
+    <div class="form-label">Phone</div>
     <p>+7 (982) 995-79-45</p>
-    <h3>Email</h3>
+    <div class="form-label">Email</div>
     <a class="email-link" data-auto-recognition="true" href="mailto:antgnff@gmail.com">antgnff@gmail.com</a>
   </div>
 </div>
